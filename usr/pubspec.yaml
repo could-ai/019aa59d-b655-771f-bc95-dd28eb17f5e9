@@ -1,0 +1,21 @@
+name: pdf_to_latex_converter
+description: A Flutter application to convert PDF content to LaTeX.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  file_picker: ^6.1.1 # Adding for file picking functionality
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

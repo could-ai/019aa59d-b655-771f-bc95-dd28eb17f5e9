@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
+  final String latexContent;
 
-  // Mock LaTeX content since no actual file was provided to convert
-  final String _mockLatex = r'''
+  const ResultScreen({
+    super.key,
+    this.latexContent = r'''
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
@@ -19,23 +20,11 @@ class ResultScreen extends StatelessWidget {
 \maketitle
 
 \section{Introduction}
-This is a placeholder for the converted LaTeX content. 
-Since the original PDF was not provided, this mock structure 
-demonstrates how the output would be presented.
-
-\section{Analysis}
-Format and spacing analysis would appear here. The converter 
-attempts to preserve the original layout as much as possible.
-
-\begin{equation}
-E = mc^2
-\end{equation}
-
-\section{Conclusion}
-The conversion process is complete.
+No content was provided for conversion. This is a placeholder structure.
 
 \end{document}
-''';
+''',
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +36,9 @@ The conversion process is complete.
             icon: const Icon(Icons.copy),
             tooltip: 'Copy to Clipboard',
             onPressed: () {
-              Clipboard.setData(ClipboardData(text: _mockLatex));
+              Clipboard.setData(ClipboardData(text: latexContent));
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('LaTeX code copied to clipboard')),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.save_alt),
-            tooltip: 'Save File',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Save functionality would go here')),
               );
             },
           ),
@@ -85,7 +65,7 @@ The conversion process is complete.
                 ),
                 child: SingleChildScrollView(
                   child: SelectableText(
-                    _mockLatex,
+                    latexContent,
                     style: const TextStyle(fontFamily: 'Courier', fontSize: 14),
                   ),
                 ),
